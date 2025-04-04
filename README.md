@@ -63,7 +63,7 @@ como en todo programa en python, se deben importar los modulos o librerias a uti
         - ventana del juego: pygame.display.set_mode()
 
 ## Ejemplo Con la bandera de colombia
-```
+``` python
 # Importamos la librería pygame
 import pygame
 import random
