@@ -111,3 +111,55 @@ pygame.quit()
 ```
 
 ![Bandera](bandera.png)
+
+## Gestion de tiempo y los eventos
+
+### Modulo Time
+
+- este modulo ofrece varias funciones que permiten cronometrar la secion actual (desde el init) o pausar la ejecucion, por ejemplo:
+- Funciones:
+    - pygame.time.get_ticks
+    - pygame.time.waitpygame.time.delay
+
+- Objeto Clock
+    - la funcion tick permite actualizar el reloj asociado con el juego actual. 
+    -se llama cada vez que se actualiza la pantalla de juego.
+    - permite especificar el numero maximo de fps y por tanto, limitar y controlar la veocidad del juego
+    - si insetamos en un buble de juego la siguiente linea garantizamos que nunca sera mas rapido de 50 fps:
+
+```Python
+Clock.tick(50)
+```
+
+### Gestion de eventos
+
+- Hay diferentes formas para que el programa sepa que se a desencadenado un evento.
+- es escencial que los programas puedan conocer inmediatamente las acciones del jugador a travez del teclado, el mouse, un joystick o cualquier o otro periferico
+
+#### Funcion pygame.event.get
+
+- permite obtener todos los eventos en espera de ser procesados y que estan disponibles en una cola. 
+- si no hay ninguno, entonces se obtiene una coleccion vacia.
+```python
+# Usamos un bucle for para recorrer todos los eventos de la coleccion obtenida a llamar a la opcion get.
+for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_ESCAPE:
+            PARAR_JUEGO = True
+```
+
+#### Funcion Pygame.event.wait
+
+- esta funcion espera que ocurra un evento, y en cuanto sucede esta disponible
+
+```python
+while True:
+    event = pygame.event.wait()
+    if event.type == pygame.QUIT:
+        break
+```
+
+#### Funcion pygame.event.poll
+
+- devuelve uno solo de los eventos que estan en la cola de espera
+
